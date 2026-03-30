@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toutounet — Toiletteur à Castets</title>
+    <link href="https://fonts.googleapis.com/css2?family=Halant:wght@500;600&family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@500&display=swap">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Satoshi', sans-serif;
+            background-color: #f6f0e9;
+            color: #2b180a;
+        }
+
+        .page-wrapper {
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 60px);
+            max-width: 1300px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 30px;
+            background: rgba(246, 240, 233, 0.65);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(239, 231, 221, 0.6);
+            border-radius: 20px;
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 8px 32px rgba(43, 24, 10, 0.08);
+        }
+
+        .navbar-brand {
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: 26px;
+            color: #2b180a;
+            text-decoration: none;
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .navbar-links a {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            color: #94877c;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .navbar-links a:hover { color: #2b180a; }
+
+        .navbar-cta {
+            background-color: #2b180a;
+            color: #f6f0e9 !important;
+            padding: 10px 20px;
+            border-radius: 12px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, color 0s !important;
+        }
+
+        .navbar-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(43, 24, 10, 0.2);
+            color: #f6f0e9 !important;
+        }
+
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .navbar-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #2b180a;
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 700px;
+            background-color: #f6f0e9;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 40px 0 200px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #e3ebe3;
+            padding: 8px 16px;
+            border-radius: 40px;
+            margin-bottom: 24px;
+            align-self: flex-start;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards 0.2s;
+        }
+
+        .hero-badge svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+        .hero-badge span {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: clamp(13px, 0.9vw, 16px);
+            color: #3a543a;
+            white-space: nowrap;
+        }
+
+        .hero h1 {
+            font-family: 'Halant', serif;
+            font-weight: 500;
+            font-size: clamp(36px, 3.5vw, 64px);
+            line-height: 0.95;
+            color: #2b180a;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.7s ease forwards 0.35s;
+        }
+
+        .hero-subtitle {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: clamp(14px, 0.9vw, 17px);
+            color: #94877c;
+            line-height: 1.6;
+            max-width: 480px;
+            margin-bottom: 32px;
+            padding-right: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.7s ease forwards 0.5s;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.7s ease forwards 0.65s;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 36px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.7s ease forwards 0.8s;
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-stat strong {
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: clamp(22px, 1.8vw, 30px);
+            color: #2b180a;
+            line-height: 1;
+        }
+
+        .hero-stat span {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: clamp(12px, 0.75vw, 14px);
+            color: #94877c;
+            margin-top: 4px;
+        }
+
+        .hero-image-container {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            width: 54%;
+            height: 90%;
+            background-color: rgba(43, 24, 10, 0.06);
+            border: 12px solid #E2DAD3;
+            border-right: none;
+            border-top: none;
+            border-bottom-left-radius: 150px;
+            overflow: hidden;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 40%;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2b180a;
+            color: #f6f0e9;
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: clamp(14px, 0.85vw, 16px);
+            padding: 13px 22px;
+            border-radius: 13px;
+            text-decoration: none;
+            white-space: nowrap;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(43, 24, 10, 0.2);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: #efe7dd;
+            color: #2b180a;
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: clamp(14px, 0.85vw, 16px);
+            padding: 13px 22px;
+            border-radius: 15px;
+            text-decoration: none;
+            white-space: nowrap;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(43, 24, 10, 0.08);
+        }
+
+        .btn-secondary svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+        /* ===== SECTION COMMON ===== */
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #efe7dd;
+            padding: 10px 18px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .section-badge span {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            color: #2b180a;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== PROCESS SECTION ===== */
+        .process {
+            background-color: #fcf6ef;
+            padding: 120px 140px;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .process-header h2 {
+            font-family: 'Halant', serif;
+            font-weight: 500;
+            font-size: clamp(36px, 4.5vw, 72px);
+            line-height: 0.95;
+            color: #2b180a;
+            max-width: 700px;
+            margin: 0 auto 24px;
+        }
+
+        .process-header p {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            color: #94877c;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .process-card {
+            background-color: #f6f0e9;
+            border: 2px solid #efe7dd;
+            border-radius: 28px;
+            padding: 40px 35px;
+            text-align: center;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 35px rgba(43, 24, 10, 0.06);
+        }
+
+        .process-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background-color: #e3ebe3;
+            color: #3a543a;
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+        }
+
+        .process-card h3 {
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: 26px;
+            color: #2b180a;
+            margin-bottom: 12px;
+        }
+
+        .process-card p {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            color: #94877c;
+            line-height: 1.7;
+        }
+
+        /* ===== PRESTATIONS ===== */
+        .prestations {
+            background-color: #f6f0e9;
+            padding: 120px 140px;
+        }
+
+        .prestations-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .prestations-header h2 {
+            font-family: 'Halant', serif;
+            font-weight: 500;
+            font-size: clamp(36px, 4.5vw, 72px);
+            line-height: 0.95;
+            color: #2b180a;
+            max-width: 700px;
+            margin: 0 auto 24px;
+        }
+
+        .prestations-header p {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            color: #94877c;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .prestations-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto 60px;
+        }
+
+        .prestation-card {
+            background-color: #fcf6ef;
+            border: 2px solid #efe7dd;
+            border-radius: 28px;
+            padding: 40px 35px;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .prestation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(43, 24, 10, 0.06);
+        }
+
+        .prestation-card-icon {
+            width: 56px;
+            height: 56px;
+            background-color: #e3ebe3;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .prestation-card-icon svg,
+        .prestation-card-icon img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .prestation-card h3 {
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: 32px;
+            color: #2b180a;
+            margin-bottom: 12px;
+        }
+
+        .prestation-card p {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 17px;
+            color: #94877c;
+            line-height: 1.7;
+        }
+
+        .prestations-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            background-color: #fcf6ef;
+            padding: 120px 140px;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .gallery-header h2 {
+            font-family: 'Halant', serif;
+            font-weight: 500;
+            font-size: clamp(36px, 4.5vw, 72px);
+            line-height: 0.95;
+            color: #2b180a;
+            max-width: 700px;
+            margin: 0 auto 24px;
+        }
+
+        .gallery-header p {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            color: #94877c;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background-color: #efe7dd;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: transform 0.35s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover { transform: scale(1.03); }
+        .gallery-item:hover img { transform: scale(1.08); }
+
+        .gallery-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 20px 16px;
+            background: linear-gradient(transparent, rgba(43, 24, 10, 0.6));
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: 20px;
+            color: #f6f0e9;
+            pointer-events: none;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(43, 24, 10, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 16px;
+            cursor: pointer;
+        }
+
+        .lightbox.open {
+            display: flex;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .lightbox img {
+            max-width: 85vw;
+            max-height: 80vh;
+            border-radius: 20px;
+            object-fit: contain;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            background: none;
+            border: none;
+            color: #f6f0e9;
+            font-size: 36px;
+            cursor: pointer;
+            line-height: 1;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .lightbox-close:hover { opacity: 1; }
+
+        .lightbox-name {
+            font-family: 'Halant', serif;
+            font-weight: 500;
+            font-size: 22px;
+            color: #f6f0e9;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ===== REVIEWS ===== */
+        .reviews {
+            background-color: #f6f0e9;
+            padding: 120px 140px;
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .reviews-header h2 {
+            font-family: 'Halant', serif;
+            font-weight: 500;
+            font-size: clamp(36px, 4.5vw, 72px);
+            line-height: 0.95;
+            color: #2b180a;
+            max-width: 700px;
+            margin: 0 auto 24px;
+        }
+
+        .reviews-header p {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            color: #94877c;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background-color: #fcf6ef;
+            border: 2px solid #efe7dd;
+            border-radius: 24px;
+            padding: 36px;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(43, 24, 10, 0.06);
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 20px;
+        }
+
+        .review-stars svg { width: 18px; height: 18px; }
+
+        .review-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            color: #94877c;
+            line-height: 1.75;
+            margin-bottom: 28px;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .review-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: #e3ebe3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: #3a543a;
+            flex-shrink: 0;
+        }
+
+        .review-author-info h5 {
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: 17px;
+            color: #2b180a;
+        }
+
+        .review-author-info span {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 13px;
+            color: #94877c;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background-color: #fcf6ef;
+            padding: 120px 140px;
+            overflow: hidden;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            flex-shrink: 0;
+            width: 520px;
+            height: 680px;
+            border-radius: 32px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-text { flex: 1; }
+
+        .about-text .section-badge { margin-bottom: 20px; }
+
+        .about-text h2 {
+            font-family: 'Halant', serif;
+            font-weight: 500;
+            font-size: clamp(36px, 4.5vw, 72px);
+            line-height: 0.95;
+            color: #2b180a;
+            margin-bottom: 30px;
+        }
+
+        .about-description {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            color: #94877c;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .about-features {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .about-feature {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .about-feature-icon {
+            width: 44px;
+            height: 44px;
+            background-color: #e3ebe3;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .about-feature-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .about-feature-text h4 {
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: 22px;
+            color: #2b180a;
+            margin-bottom: 4px;
+        }
+
+        .about-feature-text p {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 17px;
+            color: #94877c;
+            line-height: 1.5;
+        }
+
+        /* ===== FAQ ===== */
+        .faq {
+            background-color: #f6f0e9;
+            padding: 120px 140px;
+        }
+
+        .faq-layout {
+            display: flex;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+
+        .faq-left {
+            flex-shrink: 0;
+            width: 380px;
+            position: sticky;
+            top: 160px;
+            align-self: flex-start;
+        }
+
+        .faq-left h2 {
+            font-family: 'Halant', serif;
+            font-weight: 500;
+            font-size: clamp(36px, 3.8vw, 64px);
+            line-height: 0.95;
+            color: #2b180a;
+            margin-bottom: 20px;
+        }
+
+        .faq-left p {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            color: #94877c;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .faq-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background-color: #fcf6ef;
+            border: 2px solid #efe7dd;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 15px rgba(43, 24, 10, 0.05);
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 28px;
+            cursor: pointer;
+            gap: 16px;
+        }
+
+        .faq-question h4 {
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: 20px;
+            color: #2b180a;
+        }
+
+        .faq-icon {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer { max-height: 300px; }
+
+        .faq-answer p {
+            padding: 0 28px 24px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            color: #94877c;
+            line-height: 1.75;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            background-color: #2b180a;
+            padding: 0 60px;
+            text-align: center;
+            border-radius: 24px;
+            margin: 0 auto;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(58, 84, 58, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -60%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(148, 135, 124, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-section h2 {
+            font-family: 'Halant', serif;
+            font-weight: 500;
+            font-size: clamp(36px, 4.5vw, 72px);
+            line-height: 0.95;
+            color: #f6f0e9;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            color: rgba(246, 240, 233, 0.6);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f6f0e9;
+            color: #2b180a;
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            padding: 18px 36px;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            max-width: none;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-stat {
+            text-align: center;
+            padding: 30px 10px;
+            position: relative;
+        }
+
+        .cta-stat:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background-color: rgba(246, 240, 233, 0.15);
+        }
+
+        .cta-stat strong {
+            display: block;
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: clamp(28px, 3vw, 48px);
+            color: #f6f0e9;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .cta-stat span {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: clamp(13px, 0.9vw, 16px);
+            color: rgba(246, 240, 233, 0.5);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background-color: #f6f0e9;
+            padding: 80px 140px 40px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Halant', serif;
+            font-weight: 500;
+            font-size: 32px;
+            color: #2b180a;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            color: #94877c;
+            line-height: 1.7;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: #2b180a;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-col li,
+        .footer-col a {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            color: #94877c;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-col a:hover { color: #2b180a; }
+
+        .footer-divider {
+            width: 100%;
+            max-width: 1200px;
+            height: 1px;
+            background-color: #efe7dd;
+            margin: 0 auto 30px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            color: #94877c;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .footer-bottom-links a {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            color: #94877c;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-bottom-links a:hover { color: #2b180a; }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1200px) {
+            .hero-content { padding: 0 40px 0 80px; }
+            .process, .prestations, .gallery, .reviews, .about, .faq { padding: 100px 60px; }
+            .cta-section { padding: 80px 60px; margin: 0; }
+            .footer { padding: 60px 60px 30px; }
+            .about-image { width: 420px; height: 560px; }
+            .faq-left { width: 300px; }
+        }
+
+        @media (max-width: 1024px) {
+            .navbar-links { display: none; }
+            .navbar-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: calc(100% + 12px);
+                left: 0;
+                right: 0;
+                background: rgba(246, 240, 233, 0.95);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
+                border: 1px solid #efe7dd;
+                border-radius: 20px;
+                padding: 24px;
+                gap: 20px;
+            }
+            .navbar-toggle { display: block; }
+
+            .hero-content { width: 55%; padding: 0 30px 0 60px; }
+            .hero-stats { gap: 28px; }
+
+            .process-grid { grid-template-columns: 1fr; max-width: 500px; }
+            .reviews-grid { grid-template-columns: 1fr 1fr; }
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+
+            .about-content { flex-direction: column; }
+            .about-image { width: 100%; height: 420px; }
+
+            .faq-layout { flex-direction: column; gap: 40px; }
+            .faq-left { width: 100%; position: static; text-align: center; }
+
+            .footer-top { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { width: calc(100% - 32px); top: 10px; padding: 12px 20px; }
+
+            .hero { height: auto; min-height: auto; flex-direction: column-reverse; }
+            .hero-image-container {
+                position: relative;
+                width: 100%;
+                height: 50vh;
+                border-bottom-left-radius: 60px;
+            }
+            .hero-content { padding: 40px 28px 60px; width: 100%; }
+            .hero-stats { gap: 24px; margin-top: 36px; }
+
+            .process, .prestations, .gallery, .reviews, .about, .faq { padding: 80px 28px; }
+
+            .prestations-grid { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .gallery-item { border-radius: 18px; }
+
+            .cta-section { padding: 70px 28px; margin: 0; border-radius: 0; }
+            .cta-stats { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+            .footer { padding: 50px 28px 24px; }
+            .footer-top { grid-template-columns: 1fr; gap: 36px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-bottom-links { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats { flex-direction: column; gap: 16px; }
+            .hero-buttons { flex-direction: column; }
+            .hero-buttons a { text-align: center; }
+            .prestations-buttons { flex-direction: column; align-items: center; }
+            .gallery-grid { gap: 10px; }
+            .gallery-item { border-radius: 14px; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">Toutounet</a>
+        <button class="navbar-toggle" onclick="document.querySelector('.navbar-links').classList.toggle('open')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="navbar-links">
+            <li><a href="#prestations">Prestations</a></li>
+            <li><a href="#galerie">Galerie</a></li>
+            <li><a href="#avis">Avis</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html" class="navbar-cta">Prendre rendez-vous</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                <span>4.8/5 sur Google — Castets, Landes</span>
+            </div>
+            <h1>Votre toiletteur <br>à Castets</h1>
+            <p class="hero-subtitle">Toiletteuse diplômée depuis 2000, je prends soin de vos compagnons avec douceur et professionnalisme. Chiens et chats, toutes races, toutes tailles.</p>
+            <div class="hero-buttons">
+                <a href="contact.html" class="btn-primary">Prendre rendez-vous</a>
+                <a href="#prestations" class="btn-secondary">
+                    Nos prestations
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <strong>25+</strong>
+                    <span>Années d'expérience</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>500+</strong>
+                    <span>Compagnons toilettés</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>4.8</strong>
+                    <span>Note Google</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <img src="images/puppy.jpg.jpg" alt="Chien sur la plage">
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="process">
+        <div class="process-header reveal">
+            <div class="section-badge"><span>Comment ça marche</span></div>
+            <h2>Un toilettage en toute sérénité</h2>
+            <p>De la prise de rendez-vous au résultat final, chaque étape est pensée pour le bien-être de votre animal.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-card reveal">
+                <div class="process-number">1</div>
+                <h3>Prise de rendez-vous</h3>
+                <p>Contactez-moi par téléphone ou en ligne. Nous échangeons sur les besoins de votre compagnon.</p>
+            </div>
+            <div class="process-card reveal">
+                <div class="process-number">2</div>
+                <h3>Diagnostic & soins</h3>
+                <p>À son arrivée, j'examine le pelage et la peau de votre animal pour adapter le toilettage à ses besoins.</p>
+            </div>
+            <div class="process-card reveal">
+                <div class="process-number">3</div>
+                <h3>Résultat & conseils</h3>
+                <p>Votre compagnon repart beau et propre. Je vous donne des conseils d'entretien personnalisés.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRESTATIONS -->
+    <section class="prestations" id="prestations">
+        <div class="prestations-header reveal">
+            <div class="section-badge"><span>Nos prestations</span></div>
+            <h2>Un soin adapté à chaque animal</h2>
+            <p>Chaque prestation est réalisée avec douceur et des produits adaptés à votre compagnon.</p>
+        </div>
+        <div class="prestations-grid">
+            <div class="prestation-card reveal">
+                <div class="prestation-card-icon">
+                    <img src="images/Tonte.svg" alt="Tonte">
+                </div>
+                <h3>Tonte</h3>
+                <p>Tonte adaptée à la race et à la saison, réalisée avec du matériel professionnel.</p>
+            </div>
+            <div class="prestation-card reveal">
+                <div class="prestation-card-icon">
+                    <img src="images/Coupe.svg" alt="Coupe">
+                </div>
+                <h3>Coupe</h3>
+                <p>Finitions précises aux ciseaux pour une coupe soignée et élégante.</p>
+            </div>
+            <div class="prestation-card reveal">
+                <div class="prestation-card-icon">
+                    <img src="images/Epilation.svg" alt="Épilation">
+                </div>
+                <h3>Épilation</h3>
+                <p>Retrait des poils morts sans abîmer le poil vivant, favorisant une repousse saine.</p>
+            </div>
+            <div class="prestation-card reveal">
+                <div class="prestation-card-icon">
+                    <img src="images/Shampooing.svg" alt="Shampooing">
+                </div>
+                <h3>Shampooing</h3>
+                <p>Shampooings professionnels sélectionnés selon le type de peau et de poil de votre animal.</p>
+            </div>
+        </div>
+        <div class="prestations-buttons reveal">
+            <a href="contact.html" class="btn-primary">Prendre rendez-vous</a>
+            <a href="#" class="btn-secondary">En savoir plus</a>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galerie">
+        <div class="gallery-header reveal">
+            <div class="section-badge"><span>Galerie</span></div>
+            <h2>Nos petits protégés</h2>
+            <p>Découvrez quelques-uns des compagnons que nous avons eu le plaisir de bichonner.</p>
+        </div>
+        <div class="gallery-grid reveal">
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/Jerry.jpg" alt="Jerry">
+                <div class="gallery-name">Jerry</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/Milka.jpg" alt="Milka">
+                <div class="gallery-name">Milka</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/Nala.jpg" alt="Nala">
+                <div class="gallery-name">Nala</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/Tya.jpg" alt="Tya">
+                <div class="gallery-name">Tya</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="images/Ugo.jpg" alt="Ugo">
+                <div class="gallery-name">Ugo</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+        <div class="lightbox-name" id="lightbox-name"></div>
+    </div>
+
+    <!-- REVIEWS -->
+    <section class="reviews" id="avis">
+        <div class="reviews-header reveal">
+            <div class="section-badge"><span>Avis clients</span></div>
+            <h2>Ce qu'ils pensent de nous</h2>
+            <p>La confiance de nos clients est notre plus belle récompense.</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card reveal">
+                <div class="review-stars">
+                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                </div>
+                <p class="review-text">"Le 04/12 j'ai fait toiletter mon berger australien de 11 mois par Laurence. Elle a fait un super boulot. Il est très beau et tout doux avec sa coupe et il sent bon. Merci aussi pour sa gentillesse et douceur. Je le ramènerai avec plaisir au printemps. Grand merci."</p>
+                <div class="review-author">
+                    <div class="review-avatar">B</div>
+                    <div class="review-author-info">
+                        <h5>Bernard Joligard</h5>
+                        <span>Avis Google</span>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-stars">
+                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                </div>
+                <p class="review-text">"Je suis ravie de ce salon de toilettage. Mon chien est tout beau, tout propre ce soir… j'ai ressenti tout de suite le respect de la professionnelle pour mon chien, elle m'a laissé le choix de partir ou de rester. Il est clair que lui et moi nous reviendrons. Ps: pardon, après vérification, c'est moi qui suis arrivée avec 4 heures d'avance."</p>
+                <div class="review-author">
+                    <div class="review-avatar">A</div>
+                    <div class="review-author-info">
+                        <h5>Andréa Dugene</h5>
+                        <span>Avis Google</span>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-stars">
+                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                </div>
+                <p class="review-text">"Très satisfaite de ce salon de toilettage. Véronique fait un travail très soigné, et très proche avec les animaux afin de les mettre en confiance en leur parlant agréablement. Mes deux golden retriever sont ressortis beaux comme tout. Je conseille vraiment ce salon. Merci pour tout Véronique."</p>
+                <div class="review-author">
+                    <div class="review-avatar">M</div>
+                    <div class="review-author-info">
+                        <h5>Myriam Thomasson</h5>
+                        <span>Avis Google</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="apropos">
+        <div class="about-content">
+            <div class="about-image reveal">
+                <img src="images/border-collie.jpg.jpg" alt="Border Collie">
+            </div>
+            <div class="about-text reveal">
+                <div class="section-badge"><span>À propos</span></div>
+                <h2>Pourquoi choisir Toutounet ?</h2>
+                <div class="about-description">
+                    <p>Diplômée depuis 2000, je mets plus de 25 ans d'expérience et de passion au service de vos compagnons. Mon salon à Castets est un lieu chaleureux où chaque animal est accueilli avec écoute et douceur.</p>
+                </div>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#3a543a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <div class="about-feature-text">
+                            <h4>Toutes races, toutes tailles</h4>
+                            <p>Du plus petit au plus grand, chaque animal est le bienvenu.</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#3a543a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <div class="about-feature-text">
+                            <h4>Approche douce et bienveillante</h4>
+                            <p>Le bien-être de votre animal est ma priorité absolue.</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#3a543a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <div class="about-feature-text">
+                            <h4>Produits professionnels</h4>
+                            <p>Des cosmétiques haut de gamme sélectionnés pour chaque type de poil.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="faq-layout">
+            <div class="faq-left reveal">
+                <div class="section-badge"><span>FAQ</span></div>
+                <h2>Questions fréquentes</h2>
+                <p>Vous avez des questions ? Nous avons les réponses. N'hésitez pas à nous contacter pour tout autre renseignement.</p>
+                <a href="contact.html" class="btn-primary">Nous contacter</a>
+            </div>
+            <div class="faq-right">
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Quels sont les délais pour un rendez-vous ?</h4>
+                        <div class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    </div>
+                    <div class="faq-answer"><p>Comptez en moyenne 2 à 3 semaines d'attente. Je vous recommande de réserver à l'avance, surtout en période estivale.</p></div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Quels sont vos horaires d'ouverture ?</h4>
+                        <div class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    </div>
+                    <div class="faq-answer"><p>Du mardi au vendredi de 9h à 12h30 et de 13h30 à 18h, et le samedi de 9h à 13h. Fermé le lundi et le dimanche.</p></div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Acceptez-vous toutes les races ?</h4>
+                        <div class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    </div>
+                    <div class="faq-answer"><p>Oui, toutes les races et toutes les tailles sont les bienvenues, du Yorkshire au Terre-Neuve. J'accueille également les chats.</p></div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>À partir de quel âge peut-on faire toiletter son animal ?</h4>
+                        <div class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    </div>
+                    <div class="faq-answer"><p>Dès l'âge de 3 mois pour une première familiarisation. L'approche est adaptée pour qu'il associe le toilettage à un moment agréable.</p></div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Combien de temps dure une séance ?</h4>
+                        <div class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    </div>
+                    <div class="faq-answer"><p>En moyenne 1h30 pour un chien de gabarit moyen. La durée varie selon la race, la taille et l'état du pelage.</p></div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Mon animal est anxieux, comment gérez-vous cela ?</h4>
+                        <div class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    </div>
+                    <div class="faq-answer"><p>J'adopte une approche douce et bienveillante, sans muselière. Je prends le temps d'établir la confiance avec chaque animal grâce à 25 ans d'expérience.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section reveal" id="rdv">
+        <div class="cta-stats">
+            <div class="cta-stat">
+                <strong>25+</strong>
+                <span>années d'expérience</span>
+            </div>
+            <div class="cta-stat">
+                <strong>4.8/5</strong>
+                <span>avis Google</span>
+            </div>
+            <div class="cta-stat">
+                <strong>100%</strong>
+                <span>passion</span>
+            </div>
+            <div class="cta-stat">
+                <strong>2000</strong>
+                <span>diplômée depuis</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <h3>Toutounet</h3>
+                <p>Toiletteuse diplômée depuis 2000. Chiens et chats, toutes races, toutes tailles. Castets, Landes.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#prestations">Prestations</a></li>
+                    <li><a href="#galerie">Galerie</a></li>
+                    <li><a href="#avis">Avis</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Horaires</h4>
+                <ul>
+                    <li>Mar – Ven : 9h – 18h</li>
+                    <li>Samedi : 9h – 13h</li>
+                    <li>Dim & Lun : Fermé</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>Castets, Landes</li>
+                    <li>05 58 00 00 00</li>
+                    <li>contact@toutounet.fr</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Toutounet — Tous droits réservés</p>
+            <div class="footer-bottom-links">
+                <a href="mentions-legales.html">Mentions légales</a>
+                <a href="confidentialite.html">Confidentialité</a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+    <script>
+        // FAQ toggle
+        function toggleFaq(el) {
+            var item = el.parentElement;
+            var wasActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item.active').forEach(function(i) { i.classList.remove('active'); });
+            if (!wasActive) item.classList.add('active');
+        }
+
+        // Lightbox
+        function openLightbox(item) {
+            var img = item.querySelector('img');
+            var name = item.querySelector('.gallery-name');
+            document.getElementById('lightbox-img').src = img.src;
+            document.getElementById('lightbox-name').textContent = name ? name.textContent : '';
+            document.getElementById('lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(e) {
+            if (e.target === document.getElementById('lightbox-img')) return;
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox(e);
+        });
+
+        // Navbar scroll shadow
+        window.addEventListener('scroll', function() {
+            document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Reveal on scroll
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+    </script>
+
+</body>
+</html>

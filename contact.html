@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Toutounet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Halant:wght@500;600&family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@500&display=swap">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Satoshi', sans-serif;
+            background-color: #f6f0e9;
+            color: #2b180a;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 60px);
+            max-width: 1300px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 30px;
+            background: rgba(246, 240, 233, 0.65);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(239, 231, 221, 0.6);
+            border-radius: 20px;
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 8px 32px rgba(43, 24, 10, 0.08);
+        }
+
+        .navbar-brand {
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: 26px;
+            color: #2b180a;
+            text-decoration: none;
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .navbar-links a {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            color: #94877c;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .navbar-links a:hover { color: #2b180a; }
+
+        .navbar-cta {
+            background-color: #2b180a;
+            color: #f6f0e9 !important;
+            padding: 10px 20px;
+            border-radius: 12px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, color 0s !important;
+        }
+
+        .navbar-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(43, 24, 10, 0.2);
+            color: #f6f0e9 !important;
+        }
+
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .navbar-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #2b180a;
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* ===== CONTACT PAGE ===== */
+        .contact-page {
+            padding: 140px 140px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        /* Left column */
+        .contact-left h1 {
+            font-family: 'Halant', serif;
+            font-weight: 500;
+            font-size: clamp(40px, 4vw, 64px);
+            line-height: 0.95;
+            color: #2b180a;
+            margin-bottom: 28px;
+        }
+
+        .contact-intro {
+            margin-bottom: 32px;
+        }
+
+        .contact-intro p {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 17px;
+            color: #94877c;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .contact-intro strong {
+            color: #2b180a;
+        }
+
+        .contact-divider {
+            width: 100%;
+            height: 1px;
+            background-color: #efe7dd;
+            margin: 32px 0;
+        }
+
+        /* Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            color: #2b180a;
+        }
+
+        .form-group label .required {
+            color: #94877c;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #2b180a;
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid #efe7dd;
+            padding: 12px 0;
+            outline: none;
+            transition: border-color 0.3s ease;
+            width: 100%;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #2b180a;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #c4b8ab;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+            border: 2px solid #efe7dd;
+            border-radius: 16px;
+            padding: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group textarea:focus {
+            border-color: #2b180a;
+        }
+
+        .form-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2b180a;
+            color: #f6f0e9;
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 16px 36px;
+            border-radius: 15px;
+            border: none;
+            cursor: pointer;
+            align-self: flex-start;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(43, 24, 10, 0.2);
+        }
+
+        /* Right column */
+        .contact-right {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .contact-info-item h4 {
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: #2b180a;
+            margin-bottom: 8px;
+        }
+
+        .contact-info-item p,
+        .contact-info-item a {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            color: #94877c;
+            line-height: 1.6;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-info-item a:hover {
+            color: #2b180a;
+        }
+
+        .contact-hours h4 {
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: #2b180a;
+            margin-bottom: 12px;
+        }
+
+        .contact-hours p {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            color: #94877c;
+            line-height: 1.8;
+        }
+
+        .contact-map {
+            width: 100%;
+            height: 320px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid #efe7dd;
+        }
+
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background-color: #f6f0e9;
+            padding: 60px 140px 40px;
+        }
+
+        .footer-divider {
+            width: 100%;
+            max-width: 1200px;
+            height: 1px;
+            background-color: #efe7dd;
+            margin: 0 auto 30px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            color: #94877c;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .footer-bottom-links a {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            color: #94877c;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-bottom-links a:hover { color: #2b180a; }
+
+        /* ===== ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .navbar-links { display: none; }
+            .navbar-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: calc(100% + 12px);
+                left: 0;
+                right: 0;
+                background: rgba(246, 240, 233, 0.95);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
+                border: 1px solid #efe7dd;
+                border-radius: 20px;
+                padding: 24px;
+                gap: 20px;
+            }
+            .navbar-toggle { display: block; }
+
+            .contact-page { padding: 140px 60px 80px; }
+            .contact-layout { gap: 60px; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { width: calc(100% - 32px); top: 10px; padding: 12px 20px; }
+
+            .contact-page { padding: 120px 28px 60px; }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .contact-map { height: 250px; }
+
+            .footer { padding: 40px 28px 24px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-bottom-links { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">Toutounet</a>
+        <button class="navbar-toggle" onclick="document.querySelector('.navbar-links').classList.toggle('open')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="navbar-links">
+            <li><a href="index.html#prestations">Prestations</a></li>
+            <li><a href="index.html#galerie">Galerie</a></li>
+            <li><a href="index.html#avis">Avis</a></li>
+            <li><a href="index.html#apropos">À propos</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="contact.html" class="navbar-cta">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- CONTACT -->
+    <main class="contact-page">
+        <div class="contact-layout">
+
+            <!-- Left: Intro + Form -->
+            <div class="contact-left reveal">
+                <h1>Contact</h1>
+                <div class="contact-intro">
+                    <p>Vous avez des questions ou souhaitez nous contacter ?</p>
+                    <p>Remplissez notre formulaire de contact ou appelez-nous directement, et nous serons ravis de vous assister.</p>
+                    <p>Veuillez noter : le <strong>délai d'attente pour un rendez-vous est en moyenne de 4 semaines</strong>. Nous vous remercions par avance pour votre compréhension.</p>
+                </div>
+
+                <div class="contact-divider"></div>
+
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Prénom <span class="required">*</span></label>
+                            <input type="text" required placeholder="Votre prénom">
+                        </div>
+                        <div class="form-group">
+                            <label>Nom <span class="required">*</span></label>
+                            <input type="text" required placeholder="Votre nom">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email <span class="required">*</span></label>
+                            <input type="email" required placeholder="votre@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Téléphone <span class="required">*</span></label>
+                            <input type="tel" required placeholder="06 00 00 00 00">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Ville <span class="required">*</span></label>
+                            <input type="text" required placeholder="Votre ville">
+                        </div>
+                        <div class="form-group">
+                            <label>Code postal <span class="required">*</span></label>
+                            <input type="text" required placeholder="40260">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nom du chien <span class="required">*</span></label>
+                            <input type="text" required placeholder="Nom de votre compagnon">
+                        </div>
+                        <div class="form-group">
+                            <label>Âge du chien <span class="required">*</span></label>
+                            <input type="text" required placeholder="Ex : 3 ans">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Race du chien <span class="required">*</span></label>
+                        <input type="text" required placeholder="Ex : Bichon, Caniche, Berger...">
+                    </div>
+                    <div class="form-group">
+                        <label>Message <span class="required">*</span></label>
+                        <textarea required placeholder="Merci de nous indiquer vos besoins, problématiques (allergies, ...)"></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Envoyer le message</button>
+                </form>
+            </div>
+
+            <!-- Right: Info + Map -->
+            <div class="contact-right reveal">
+                <div class="contact-info-grid">
+                    <div class="contact-info-item">
+                        <h4>Adresse</h4>
+                        <p>654 Rue des Mousquetaires<br>40260 Castets</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <h4>Téléphone</h4>
+                        <p><a href="tel:0641076029">06 41 07 60 29</a></p>
+                    </div>
+                    <div class="contact-info-item">
+                        <h4>Email</h4>
+                        <p><a href="mailto:contact@toutounet.fr">contact@toutounet.fr</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-hours">
+                    <h4>Horaires</h4>
+                    <p>
+                        Lundi – Vendredi : 9h00 – 17h00<br>
+                        Samedi : 9h00 – 12h00<br>
+                        Dimanche : Fermé
+                    </p>
+                </div>
+
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2895.5!2d-1.1467!3d43.8833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5411c7c7c7c7c7%3A0x0!2s654+Rue+des+Mousquetaires%2C+40260+Castets!5e0!3m2!1sfr!2sfr!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Toutounet — Tous droits réservés</p>
+            <div class="footer-bottom-links">
+                <a href="mentions-legales.html">Mentions légales</a>
+                <a href="confidentialite.html">Confidentialité</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+    </script>
+
+</body>
+</html>

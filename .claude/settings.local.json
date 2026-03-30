@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "WebFetch(domain:instant-canin.com)",
+      "WebFetch(domain:framer.com)",
+      "WebSearch",
+      "WebFetch(domain:groomify.framer.website)",
+      "WebFetch(domain:share.google)",
+      "WebFetch(domain:www.google.com)",
+      "WebFetch(domain:groomie.fr)",
+      "WebFetch(domain:tous-les-horaires.fr)",
+      "WebFetch(domain:www.findglocal.com)",
+      "WebFetch(domain:toiletteurs.nosavis.com)",
+      "WebFetch(domain:www.bottin.fr)",
+      "WebFetch(domain:toutounet.site-solocal.com)"
+    ]
+  }
+}

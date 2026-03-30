@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "toutounet",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "C:/Users/Admin/Desktop/TOUTOUNET", "-l", "3456"],
+      "port": 3456
+    }
+  ]
+}

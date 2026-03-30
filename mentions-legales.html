@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions légales — Toutounet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Halant:wght@500;600&family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@500&display=swap">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Satoshi', sans-serif;
+            background-color: #f6f0e9;
+            color: #2b180a;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 60px);
+            max-width: 1300px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 30px;
+            background: rgba(246, 240, 233, 0.65);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(239, 231, 221, 0.6);
+            border-radius: 20px;
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 8px 32px rgba(43, 24, 10, 0.08);
+        }
+
+        .navbar-brand {
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: 26px;
+            color: #2b180a;
+            text-decoration: none;
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .navbar-links a {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            color: #94877c;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .navbar-links a:hover { color: #2b180a; }
+
+        .navbar-cta {
+            background-color: #2b180a;
+            color: #f6f0e9 !important;
+            padding: 10px 20px;
+            border-radius: 12px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, color 0s !important;
+        }
+
+        .navbar-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(43, 24, 10, 0.2);
+            color: #f6f0e9 !important;
+        }
+
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .navbar-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #2b180a;
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* ===== LEGAL PAGE ===== */
+        .legal-page {
+            padding: 140px 140px 80px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .legal-page h1 {
+            font-family: 'Halant', serif;
+            font-weight: 500;
+            font-size: clamp(36px, 3.5vw, 56px);
+            line-height: 1;
+            color: #2b180a;
+            margin-bottom: 16px;
+        }
+
+        .legal-page .legal-updated {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            color: #94877c;
+            margin-bottom: 48px;
+        }
+
+        .legal-page h2 {
+            font-family: 'Halant', serif;
+            font-weight: 600;
+            font-size: 22px;
+            color: #2b180a;
+            margin-top: 40px;
+            margin-bottom: 16px;
+        }
+
+        .legal-page p {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #94877c;
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+
+        .legal-page strong {
+            color: #2b180a;
+        }
+
+        .legal-page a {
+            color: #3a543a;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .legal-page a:hover {
+            color: #2b180a;
+        }
+
+        .legal-divider {
+            width: 100%;
+            height: 1px;
+            background-color: #efe7dd;
+            margin: 48px 0;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background-color: #f6f0e9;
+            padding: 60px 140px 40px;
+        }
+
+        .footer-divider {
+            width: 100%;
+            max-width: 1200px;
+            height: 1px;
+            background-color: #efe7dd;
+            margin: 0 auto 30px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            color: #94877c;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .footer-bottom-links a {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            color: #94877c;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-bottom-links a:hover { color: #2b180a; }
+
+        /* ===== ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .navbar-links { display: none; }
+            .navbar-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: calc(100% + 12px);
+                left: 0;
+                right: 0;
+                background: rgba(246, 240, 233, 0.95);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
+                border: 1px solid #efe7dd;
+                border-radius: 20px;
+                padding: 24px;
+                gap: 20px;
+            }
+            .navbar-toggle { display: block; }
+
+            .legal-page { padding: 140px 60px 80px; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { width: calc(100% - 32px); top: 10px; padding: 12px 20px; }
+            .legal-page { padding: 120px 28px 60px; }
+            .footer { padding: 40px 28px 24px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-bottom-links { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">Toutounet</a>
+        <button class="navbar-toggle" onclick="document.querySelector('.navbar-links').classList.toggle('open')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="navbar-links">
+            <li><a href="index.html#prestations">Prestations</a></li>
+            <li><a href="index.html#galerie">Galerie</a></li>
+            <li><a href="index.html#avis">Avis</a></li>
+            <li><a href="index.html#apropos">À propos</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html" class="navbar-cta">Prendre rendez-vous</a></li>
+        </ul>
+    </nav>
+
+    <!-- MENTIONS LÉGALES -->
+    <main class="legal-page reveal">
+        <h1>Mentions légales</h1>
+        <p class="legal-updated">Dernière mise à jour : mars 2026</p>
+
+        <h2>1. Éditeur du site</h2>
+        <p>
+            <strong>Toutounet</strong> — Salon de toilettage canin et félin<br>
+            654 Rue des Mousquetaires, 40260 Castets, France<br>
+            Téléphone : <a href="tel:0641076029">06 41 07 60 29</a><br>
+            Responsable de la publication : Véronique — Gérante
+        </p>
+        <p>
+            Statut : Entreprise individuelle<br>
+            Activité : Toilettage pour chiens et chats
+        </p>
+
+        <div class="legal-divider"></div>
+
+        <h2>2. Hébergement</h2>
+        <p>
+            Le site est hébergé par :<br>
+            <strong>À compléter</strong> — [Nom de l'hébergeur]<br>
+            [Adresse de l'hébergeur]<br>
+            [Téléphone de l'hébergeur]
+        </p>
+
+        <div class="legal-divider"></div>
+
+        <h2>3. Propriété intellectuelle</h2>
+        <p>L'ensemble du contenu de ce site (textes, images, photographies, logos, icônes, vidéos) est la propriété exclusive de Toutounet ou de ses partenaires, et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.</p>
+        <p>Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie du contenu du site, quel que soit le moyen ou le procédé utilisé, est interdite sans autorisation écrite préalable de Toutounet.</p>
+
+        <div class="legal-divider"></div>
+
+        <h2>4. Données personnelles</h2>
+        <p>Les informations recueillies via le formulaire de contact sont destinées uniquement à Toutounet et servent au traitement de votre demande. Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi « Informatique et Libertés », vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données vous concernant.</p>
+        <p>Pour exercer ces droits, veuillez nous contacter par téléphone au <a href="tel:0641076029">06 41 07 60 29</a> ou via notre <a href="contact.html">formulaire de contact</a>.</p>
+        <p>Pour en savoir plus, consultez notre <a href="confidentialite.html">politique de confidentialité</a>.</p>
+
+        <div class="legal-divider"></div>
+
+        <h2>5. Cookies</h2>
+        <p>Ce site n'utilise pas de cookies de suivi ou de publicité. Seuls des cookies strictement nécessaires au fonctionnement du site peuvent être utilisés (Google Maps intégré sur la page contact).</p>
+
+        <div class="legal-divider"></div>
+
+        <h2>6. Limitation de responsabilité</h2>
+        <p>Toutounet s'efforce de fournir des informations aussi précises que possible. Toutefois, Toutounet ne pourra être tenu responsable des omissions, des inexactitudes ou des carences dans la mise à jour des informations, qu'elles soient de son fait ou du fait des tiers partenaires qui lui fournissent ces informations.</p>
+        <p>Les liens hypertextes mis en place dans le cadre du présent site vers d'autres ressources sur Internet ne sauraient engager la responsabilité de Toutounet.</p>
+
+        <div class="legal-divider"></div>
+
+        <h2>7. Droit applicable</h2>
+        <p>Les présentes mentions légales sont régies par le droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Toutounet — Tous droits réservés</p>
+            <div class="footer-bottom-links">
+                <a href="mentions-legales.html">Mentions légales</a>
+                <a href="confidentialite.html">Confidentialité</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+    </script>
+
+</body>
+</html>
