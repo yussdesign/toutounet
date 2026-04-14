@@ -1,0 +1,110 @@
+backend:
+  name: github
+  repo: yussdesign/toutounet
+  branch: main
+  # Sveltia CMS accepte un Personal Access Token directement (pas besoin d'OAuth proxy)
+
+# Dossier où seront uploadées les nouvelles images (pour la galerie, héro, etc.)
+media_folder: "images"
+public_folder: "/images"
+
+locale: "fr"
+
+collections:
+  # ---------- Fichier unique : tout le contenu éditable ----------
+  - name: "site"
+    label: "Contenu du site"
+    files:
+      - name: "content"
+        label: "Contenu général"
+        file: "content/site.json"
+        format: "json"
+        fields:
+
+          # --- Contact ---
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Téléphone (affiché)", name: "phone", widget: "string" }
+              - { label: "Téléphone (lien tel:)", name: "phone_href", widget: "string", hint: "Format : tel:0641076029" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Adresse — ligne 1", name: "address_line1", widget: "string" }
+              - { label: "Adresse — ligne 2", name: "address_line2", widget: "string" }
+              - { label: "Ville (affichée dans le footer)", name: "city", widget: "string" }
+
+          # --- Horaires ---
+          - label: "Horaires"
+            name: "hours"
+            widget: "object"
+            fields:
+              - { label: "Horaires — semaine (accueil/footer)", name: "weekdays", widget: "string" }
+              - { label: "Horaires — samedi (accueil/footer)", name: "saturday", widget: "string" }
+              - { label: "Horaires — fermé (accueil/footer)", name: "closed", widget: "string" }
+              - { label: "Horaires — semaine (page contact)", name: "contact_weekdays", widget: "string" }
+              - { label: "Horaires — samedi (page contact)", name: "contact_saturday", widget: "string" }
+              - { label: "Horaires — dimanche (page contact)", name: "contact_sunday", widget: "string" }
+
+          # --- Hero (haut d'accueil) ---
+          - label: "Hero (accueil)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Badge", name: "badge", widget: "string" }
+              - { label: "Titre (ligne 1)", name: "title_line1", widget: "string" }
+              - { label: "Titre (ligne 2)", name: "title_line2", widget: "string" }
+              - { label: "Sous-titre", name: "subtitle", widget: "text" }
+              - { label: "Statistique — années", name: "stat_experience", widget: "string" }
+              - { label: "Statistique — années (label)", name: "stat_experience_label", widget: "string" }
+              - { label: "Statistique — compagnons", name: "stat_pets", widget: "string" }
+              - { label: "Statistique — compagnons (label)", name: "stat_pets_label", widget: "string" }
+              - { label: "Statistique — note", name: "stat_rating", widget: "string" }
+              - { label: "Statistique — note (label)", name: "stat_rating_label", widget: "string" }
+
+          # --- Images fixes ---
+          - label: "Images fixes"
+            name: "images"
+            widget: "object"
+            fields:
+              - { label: "Photo hero (accueil)", name: "hero", widget: "image" }
+              - { label: "Photo hero — alt", name: "hero_alt", widget: "string" }
+              - { label: "Photo à propos", name: "about", widget: "image" }
+              - { label: "Photo à propos — alt", name: "about_alt", widget: "string" }
+
+          # --- Galerie (ajouter/supprimer des chiens) ---
+          - label: "Galerie — Nos petits protégés"
+            name: "gallery"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Photo", name: "src", widget: "image" }
+              - { label: "Nom du chien", name: "name", widget: "string" }
+              - { label: "Texte alternatif (accessibilité)", name: "alt", widget: "string", required: false }
+
+          # --- Page contact ---
+          - label: "Page contact — Textes d'intro"
+            name: "contact_page"
+            widget: "object"
+            fields:
+              - { label: "Intro — ligne 1", name: "intro1", widget: "string" }
+              - { label: "Intro — ligne 2", name: "intro2", widget: "text" }
+              - { label: "Note délai d'attente", name: "delay_notice", widget: "string" }
+
+          # --- Avis clients ---
+          - label: "Avis clients"
+            name: "reviews"
+            widget: "list"
+            summary: "{{fields.author}}"
+            fields:
+              - { label: "Initiale (lettre dans le rond)", name: "initial", widget: "string", pattern: ['^.{1,2}$', 'Une ou deux lettres'] }
+              - { label: "Auteur", name: "author", widget: "string" }
+              - { label: "Texte de l'avis", name: "text", widget: "text" }
+
+          # --- FAQ ---
+          - label: "FAQ"
+            name: "faq"
+            widget: "list"
+            summary: "{{fields.question}}"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Réponse", name: "answer", widget: "text" }

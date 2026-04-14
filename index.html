@@ -6,6 +6,7 @@
     <title>Toutounet — Toiletteur à Castets</title>
     <link href="https://fonts.googleapis.com/css2?family=Halant:wght@500;600&family=Poppins:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@500&display=swap">
+    <script src="/js/cms.js" defer></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -1378,10 +1379,10 @@
         <div class="hero-content">
             <div class="hero-badge">
                 <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                <span>4.8/5 sur Google — Castets, Landes</span>
+                <span data-cms="hero.badge">4.8/5 sur Google — Castets, Landes</span>
             </div>
-            <h1>Votre toiletteur <br>à Castets</h1>
-            <p class="hero-subtitle">Toiletteuse diplômée depuis 2000, je prends soin de vos compagnons avec douceur et professionnalisme. Chiens et chats, toutes races, toutes tailles.</p>
+            <h1><span data-cms="hero.title_line1">Votre toiletteur</span> <br><span data-cms="hero.title_line2">à Castets</span></h1>
+            <p class="hero-subtitle" data-cms="hero.subtitle">Toiletteuse diplômée depuis 2000, je prends soin de vos compagnons avec douceur et professionnalisme. Chiens et chats, toutes races, toutes tailles.</p>
             <div class="hero-buttons">
                 <a href="contact.html" class="btn-primary">Prendre rendez-vous</a>
                 <a href="#prestations" class="btn-secondary">
@@ -1391,21 +1392,21 @@
             </div>
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <strong>25+</strong>
-                    <span>Années d'expérience</span>
+                    <strong data-cms="hero.stat_experience">25+</strong>
+                    <span data-cms="hero.stat_experience_label">Années d'expérience</span>
                 </div>
                 <div class="hero-stat">
-                    <strong>500+</strong>
-                    <span>Compagnons toilettés</span>
+                    <strong data-cms="hero.stat_pets">500+</strong>
+                    <span data-cms="hero.stat_pets_label">Compagnons toilettés</span>
                 </div>
                 <div class="hero-stat">
-                    <strong>4.8</strong>
-                    <span>Note Google</span>
+                    <strong data-cms="hero.stat_rating">4.8</strong>
+                    <span data-cms="hero.stat_rating_label">Note Google</span>
                 </div>
             </div>
         </div>
         <div class="hero-image-container">
-            <img src="images/puppy.jpg.jpg" alt="Chien sur la plage">
+            <img src="images/puppy.jpg.jpg" alt="Chien sur la plage" data-cms="images.hero" data-cms-attr="src">
         </div>
     </section>
 
@@ -1485,27 +1486,13 @@
             <h2>Nos petits protégés</h2>
             <p>Découvrez quelques-uns des compagnons que nous avons eu le plaisir de bichonner.</p>
         </div>
-        <div class="gallery-grid reveal">
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <img src="images/Jerry.jpg" alt="Jerry">
-                <div class="gallery-name">Jerry</div>
-            </div>
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <img src="images/Milka.jpg" alt="Milka">
-                <div class="gallery-name">Milka</div>
-            </div>
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <img src="images/Nala.jpg" alt="Nala">
-                <div class="gallery-name">Nala</div>
-            </div>
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <img src="images/Tya.jpg" alt="Tya">
-                <div class="gallery-name">Tya</div>
-            </div>
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <img src="images/Ugo.jpg" alt="Ugo">
-                <div class="gallery-name">Ugo</div>
-            </div>
+        <div class="gallery-grid reveal" data-cms-list="gallery">
+            <template data-cms-item>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img data-cms-field="src" data-cms-attr="src" alt="">
+                    <div class="gallery-name" data-cms-field="name"></div>
+                </div>
+            </template>
         </div>
     </section>
 
@@ -1523,58 +1510,26 @@
             <h2>Ce qu'ils pensent de nous</h2>
             <p>La confiance de nos clients est notre plus belle récompense.</p>
         </div>
-        <div class="reviews-grid">
-            <div class="review-card reveal">
-                <div class="review-stars">
-                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                </div>
-                <p class="review-text">"Le 04/12 j'ai fait toiletter mon berger australien de 11 mois par Laurence. Elle a fait un super boulot. Il est très beau et tout doux avec sa coupe et il sent bon. Merci aussi pour sa gentillesse et douceur. Je le ramènerai avec plaisir au printemps. Grand merci."</p>
-                <div class="review-author">
-                    <div class="review-avatar">B</div>
-                    <div class="review-author-info">
-                        <h5>Bernard Joligard</h5>
-                        <span>Avis Google</span>
+        <div class="reviews-grid" data-cms-list="reviews">
+            <template data-cms-item>
+                <div class="review-card reveal">
+                    <div class="review-stars">
+                        <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                    </div>
+                    <p class="review-text" data-cms-field="text"></p>
+                    <div class="review-author">
+                        <div class="review-avatar" data-cms-field="initial"></div>
+                        <div class="review-author-info">
+                            <h5 data-cms-field="author"></h5>
+                            <span>Avis Google</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="review-card reveal">
-                <div class="review-stars">
-                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                </div>
-                <p class="review-text">"Je suis ravie de ce salon de toilettage. Mon chien est tout beau, tout propre ce soir… j'ai ressenti tout de suite le respect de la professionnelle pour mon chien, elle m'a laissé le choix de partir ou de rester. Il est clair que lui et moi nous reviendrons. Ps: pardon, après vérification, c'est moi qui suis arrivée avec 4 heures d'avance."</p>
-                <div class="review-author">
-                    <div class="review-avatar">A</div>
-                    <div class="review-author-info">
-                        <h5>Andréa Dugene</h5>
-                        <span>Avis Google</span>
-                    </div>
-                </div>
-            </div>
-            <div class="review-card reveal">
-                <div class="review-stars">
-                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                </div>
-                <p class="review-text">"Très satisfaite de ce salon de toilettage. Véronique fait un travail très soigné, et très proche avec les animaux afin de les mettre en confiance en leur parlant agréablement. Mes deux golden retriever sont ressortis beaux comme tout. Je conseille vraiment ce salon. Merci pour tout Véronique."</p>
-                <div class="review-author">
-                    <div class="review-avatar">M</div>
-                    <div class="review-author-info">
-                        <h5>Myriam Thomasson</h5>
-                        <span>Avis Google</span>
-                    </div>
-                </div>
-            </div>
+            </template>
         </div>
     </section>
 
@@ -1582,7 +1537,7 @@
     <section class="about" id="apropos">
         <div class="about-content">
             <div class="about-image reveal">
-                <img src="images/border-collie.jpg.jpg" alt="Border Collie">
+                <img src="images/border-collie.jpg.jpg" alt="Border Collie" data-cms="images.about" data-cms-attr="src">
             </div>
             <div class="about-text reveal">
                 <div class="section-badge"><span>À propos</span></div>
@@ -1632,49 +1587,16 @@
                 <p>Vous avez des questions ? Nous avons les réponses. N'hésitez pas à nous contacter pour tout autre renseignement.</p>
                 <a href="contact.html" class="btn-primary">Nous contacter</a>
             </div>
-            <div class="faq-right">
-                <div class="faq-item reveal">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h4>Quels sont les délais pour un rendez-vous ?</h4>
-                        <div class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-right" data-cms-list="faq">
+                <template data-cms-item>
+                    <div class="faq-item reveal">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4 data-cms-field="question"></h4>
+                            <div class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                        </div>
+                        <div class="faq-answer"><p data-cms-field="answer"></p></div>
                     </div>
-                    <div class="faq-answer"><p>Comptez en moyenne 2 à 3 semaines d'attente. Je vous recommande de réserver à l'avance, surtout en période estivale.</p></div>
-                </div>
-                <div class="faq-item reveal">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h4>Quels sont vos horaires d'ouverture ?</h4>
-                        <div class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-                    </div>
-                    <div class="faq-answer"><p>Du mardi au vendredi de 9h à 12h30 et de 13h30 à 18h, et le samedi de 9h à 13h. Fermé le lundi et le dimanche.</p></div>
-                </div>
-                <div class="faq-item reveal">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h4>Acceptez-vous toutes les races ?</h4>
-                        <div class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-                    </div>
-                    <div class="faq-answer"><p>Oui, toutes les races et toutes les tailles sont les bienvenues, du Yorkshire au Terre-Neuve. J'accueille également les chats.</p></div>
-                </div>
-                <div class="faq-item reveal">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h4>À partir de quel âge peut-on faire toiletter son animal ?</h4>
-                        <div class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-                    </div>
-                    <div class="faq-answer"><p>Dès l'âge de 3 mois pour une première familiarisation. L'approche est adaptée pour qu'il associe le toilettage à un moment agréable.</p></div>
-                </div>
-                <div class="faq-item reveal">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h4>Combien de temps dure une séance ?</h4>
-                        <div class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-                    </div>
-                    <div class="faq-answer"><p>En moyenne 1h30 pour un chien de gabarit moyen. La durée varie selon la race, la taille et l'état du pelage.</p></div>
-                </div>
-                <div class="faq-item reveal">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h4>Mon animal est anxieux, comment gérez-vous cela ?</h4>
-                        <div class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-                    </div>
-                    <div class="faq-answer"><p>J'adopte une approche douce et bienveillante, sans muselière. Je prends le temps d'établir la confiance avec chaque animal grâce à 25 ans d'expérience.</p></div>
-                </div>
+                </template>
             </div>
         </div>
     </section>
@@ -1721,17 +1643,17 @@
             <div class="footer-col">
                 <h4>Horaires</h4>
                 <ul>
-                    <li>Mar – Ven : 9h – 18h</li>
-                    <li>Samedi : 9h – 13h</li>
-                    <li>Dim & Lun : Fermé</li>
+                    <li data-cms="hours.weekdays">Mar – Ven : 9h – 18h</li>
+                    <li data-cms="hours.saturday">Samedi : 9h – 13h</li>
+                    <li data-cms="hours.closed">Dim & Lun : Fermé</li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Contact</h4>
                 <ul>
-                    <li>Castets, Landes</li>
-                    <li>05 58 00 00 00</li>
-                    <li>contact@toutounet.fr</li>
+                    <li data-cms="contact.city">Castets, Landes</li>
+                    <li data-cms="contact.phone">05 58 00 00 00</li>
+                    <li data-cms="contact.email">contact@toutounet.fr</li>
                 </ul>
             </div>
         </div>

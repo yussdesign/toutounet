@@ -420,6 +420,7 @@
             .footer-bottom-links { justify-content: center; }
         }
     </style>
+    <script src="/js/cms.js" defer></script>
 </head>
 <body>
 
@@ -447,9 +448,9 @@
             <div class="contact-left reveal">
                 <h1>Contact</h1>
                 <div class="contact-intro">
-                    <p>Vous avez des questions ou souhaitez nous contacter ?</p>
-                    <p>Remplissez notre formulaire de contact ou appelez-nous directement, et nous serons ravis de vous assister.</p>
-                    <p>Veuillez noter : le <strong>délai d'attente pour un rendez-vous est en moyenne de 4 semaines</strong>. Nous vous remercions par avance pour votre compréhension.</p>
+                    <p data-cms="contact_page.intro1">Vous avez des questions ou souhaitez nous contacter ?</p>
+                    <p data-cms="contact_page.intro2">Remplissez notre formulaire de contact ou appelez-nous directement, et nous serons ravis de vous assister.</p>
+                    <p>Veuillez noter : le <strong data-cms="contact_page.delay_notice">délai d'attente pour un rendez-vous est en moyenne de 4 semaines</strong>. Nous vous remercions par avance pour votre compréhension.</p>
                 </div>
 
                 <div class="contact-divider"></div>
@@ -512,24 +513,24 @@
                 <div class="contact-info-grid">
                     <div class="contact-info-item">
                         <h4>Adresse</h4>
-                        <p>654 Rue des Mousquetaires<br>40260 Castets</p>
+                        <p><span data-cms="contact.address_line1">654 Rue des Mousquetaires</span><br><span data-cms="contact.address_line2">40260 Castets</span></p>
                     </div>
                     <div class="contact-info-item">
                         <h4>Téléphone</h4>
-                        <p><a href="tel:0641076029">06 41 07 60 29</a></p>
+                        <p><a href="tel:0641076029" data-cms="contact.phone_href" data-cms-attr="href"><span data-cms="contact.phone">06 41 07 60 29</span></a></p>
                     </div>
                     <div class="contact-info-item">
                         <h4>Email</h4>
-                        <p><a href="mailto:contact@toutounet.fr">contact@toutounet.fr</a></p>
+                        <p><a href="mailto:contact@toutounet.fr" data-cms="contact.email">contact@toutounet.fr</a></p>
                     </div>
                 </div>
 
                 <div class="contact-hours">
                     <h4>Horaires</h4>
                     <p>
-                        Lundi – Vendredi : 9h00 – 17h00<br>
-                        Samedi : 9h00 – 12h00<br>
-                        Dimanche : Fermé
+                        <span data-cms="hours.contact_weekdays">Lundi – Vendredi : 9h00 – 17h00</span><br>
+                        <span data-cms="hours.contact_saturday">Samedi : 9h00 – 12h00</span><br>
+                        <span data-cms="hours.contact_sunday">Dimanche : Fermé</span>
                     </p>
                 </div>
 

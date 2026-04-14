@@ -1,0 +1,91 @@
+{
+  "contact": {
+    "phone": "06 41 07 60 29",
+    "phone_href": "tel:0641076029",
+    "email": "contact@toutounet.fr",
+    "address_line1": "654 Rue des Mousquetaires",
+    "address_line2": "40260 Castets",
+    "city": "Castets, Landes"
+  },
+  "hours": {
+    "weekdays": "Mar – Ven : 9h – 18h",
+    "saturday": "Samedi : 9h – 13h",
+    "closed": "Dim & Lun : Fermé",
+    "contact_weekdays": "Lundi – Vendredi : 9h00 – 17h00",
+    "contact_saturday": "Samedi : 9h00 – 12h00",
+    "contact_sunday": "Dimanche : Fermé"
+  },
+  "hero": {
+    "badge": "4.8/5 sur Google — Castets, Landes",
+    "title_line1": "Votre toiletteur",
+    "title_line2": "à Castets",
+    "subtitle": "Toiletteuse diplômée depuis 2000, je prends soin de vos compagnons avec douceur et professionnalisme. Chiens et chats, toutes races, toutes tailles.",
+    "stat_experience": "25+",
+    "stat_experience_label": "Années d'expérience",
+    "stat_pets": "500+",
+    "stat_pets_label": "Compagnons toilettés",
+    "stat_rating": "4.8",
+    "stat_rating_label": "Note Google"
+  },
+  "images": {
+    "hero": "images/puppy.jpg.jpg",
+    "hero_alt": "Chien sur la plage",
+    "about": "images/border-collie.jpg.jpg",
+    "about_alt": "Border Collie"
+  },
+  "gallery": [
+    { "src": "images/Jerry.jpg", "name": "Jerry", "alt": "Jerry" },
+    { "src": "images/Milka.jpg", "name": "Milka", "alt": "Milka" },
+    { "src": "images/Nala.jpg", "name": "Nala", "alt": "Nala" },
+    { "src": "images/Tya.jpg", "name": "Tya", "alt": "Tya" },
+    { "src": "images/Ugo.jpg", "name": "Ugo", "alt": "Ugo" }
+  ],
+  "contact_page": {
+    "intro1": "Vous avez des questions ou souhaitez nous contacter ?",
+    "intro2": "Remplissez notre formulaire de contact ou appelez-nous directement, et nous serons ravis de vous assister.",
+    "delay_notice": "délai d'attente pour un rendez-vous est en moyenne de 4 semaines"
+  },
+  "reviews": [
+    {
+      "initial": "B",
+      "author": "Bernard Joligard",
+      "text": "Le 04/12 j'ai fait toiletter mon berger australien de 11 mois par Laurence. Elle a fait un super boulot. Il est très beau et tout doux avec sa coupe et il sent bon. Merci aussi pour sa gentillesse et douceur. Je le ramènerai avec plaisir au printemps. Grand merci."
+    },
+    {
+      "initial": "A",
+      "author": "Andréa Dugene",
+      "text": "Je suis ravie de ce salon de toilettage. Mon chien est tout beau, tout propre ce soir… j'ai ressenti tout de suite le respect de la professionnelle pour mon chien, elle m'a laissé le choix de partir ou de rester. Il est clair que lui et moi nous reviendrons. Ps: pardon, après vérification, c'est moi qui suis arrivée avec 4 heures d'avance."
+    },
+    {
+      "initial": "M",
+      "author": "Myriam Thomasson",
+      "text": "Très satisfaite de ce salon de toilettage. Véronique fait un travail très soigné, et très proche avec les animaux afin de les mettre en confiance en leur parlant agréablement. Mes deux golden retriever sont ressortis beaux comme tout. Je conseille vraiment ce salon. Merci pour tout Véronique."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Quels sont les délais pour un rendez-vous ?",
+      "answer": "Comptez en moyenne 2 à 3 semaines d'attente. Je vous recommande de réserver à l'avance, surtout en période estivale."
+    },
+    {
+      "question": "Quels sont vos horaires d'ouverture ?",
+      "answer": "Du mardi au vendredi de 9h à 12h30 et de 13h30 à 18h, et le samedi de 9h à 13h. Fermé le lundi et le dimanche."
+    },
+    {
+      "question": "Acceptez-vous toutes les races ?",
+      "answer": "Oui, toutes les races et toutes les tailles sont les bienvenues, du Yorkshire au Terre-Neuve. J'accueille également les chats."
+    },
+    {
+      "question": "À partir de quel âge peut-on faire toiletter son animal ?",
+      "answer": "Dès l'âge de 3 mois pour une première familiarisation. L'approche est adaptée pour qu'il associe le toilettage à un moment agréable."
+    },
+    {
+      "question": "Combien de temps dure une séance ?",
+      "answer": "En moyenne 1h30 pour un chien de gabarit moyen. La durée varie selon la race, la taille et l'état du pelage."
+    },
+    {
+      "question": "Mon animal est anxieux, comment gérez-vous cela ?",
+      "answer": "J'adopte une approche douce et bienveillante, sans muselière. Je prends le temps d'établir la confiance avec chaque animal grâce à 25 ans d'expérience."
+    }
+  ]
+}
