@@ -24,7 +24,7 @@
     "stat_experience_label": "Années d'expérience",
     "stat_pets": "500+",
     "stat_pets_label": "Compagnons toilettés",
-    "stat_rating": "4.8",
+    "stat_rating": "5",
     "stat_rating_label": "Note Google"
   },
   "images": {
@@ -34,11 +34,31 @@
     "about_alt": "Border Collie"
   },
   "gallery": [
-    { "src": "images/Jerry.jpg", "name": "Jerry", "alt": "Jerry" },
-    { "src": "images/Milka.jpg", "name": "Milka", "alt": "Milka" },
-    { "src": "images/Nala.jpg", "name": "Nala", "alt": "Nala" },
-    { "src": "images/Tya.jpg", "name": "Tya", "alt": "Tya" },
-    { "src": "images/Ugo.jpg", "name": "Ugo", "alt": "Ugo" }
+    {
+      "src": "images/Jerry.jpg",
+      "name": "Jerry",
+      "alt": "Jerry"
+    },
+    {
+      "src": "images/Milka.jpg",
+      "name": "Milka",
+      "alt": "Milka"
+    },
+    {
+      "src": "images/Nala.jpg",
+      "name": "Nala",
+      "alt": "Nala"
+    },
+    {
+      "src": "images/Tya.jpg",
+      "name": "Tya",
+      "alt": "Tya"
+    },
+    {
+      "src": "images/Ugo.jpg",
+      "name": "Ugo",
+      "alt": "Ugo"
+    }
   ],
   "contact_page": {
     "intro1": "Vous avez des questions ou souhaitez nous contacter ?",
