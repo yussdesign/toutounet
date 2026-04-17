@@ -11,51 +11,19 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg-main: #f6f0e9;
-            --bg-alt: #fcf6ef;
-            --text-dark: #2b180a;
-            --text-muted: #94877c;
-            --border: #efe7dd;
-            --accent-light: #e3ebe3;
-            --accent: #3a543a;
-            --border-hero: #E2DAD3;
-            --bg-main-rgb: 246, 240, 233;
-            --text-dark-rgb: 43, 24, 10;
-            --border-rgb: 239, 231, 221;
-            --accent-rgb: 58, 84, 58;
-            --text-muted-rgb: 148, 135, 124;
-        }
-
-        .theme-vert {
-            --bg-main: #E1F2D5;
-            --bg-alt: #EEF7E8;
-            --text-dark: #2A4A1E;
-            --text-muted: #6B8F5E;
-            --border: #B8D9BA;
-            --accent-light: #C8E6C0;
-            --accent: #4A8C5C;
-            --border-hero: #A4BF88;
-            --bg-main-rgb: 225, 242, 213;
-            --text-dark-rgb: 42, 74, 30;
-            --border-rgb: 184, 216, 186;
-            --accent-rgb: 74, 140, 92;
-            --text-muted-rgb: 107, 143, 94;
-        }
-
-        .theme-violet {
-            --bg-main: #F5EAFF;
-            --bg-alt: #FBF2FF;
-            --text-dark: #3D1A5C;
-            --text-muted: #9878B0;
-            --border: #DFBAE8;
-            --accent-light: #E8D6F5;
-            --accent: #7B4FA0;
-            --border-hero: #CCBAE8;
-            --bg-main-rgb: 245, 234, 255;
-            --text-dark-rgb: 61, 26, 92;
-            --border-rgb: 223, 186, 232;
-            --accent-rgb: 123, 79, 160;
-            --text-muted-rgb: 152, 120, 176;
+            --bg-main: #F2EFBB;        /* fond principal - jaune crème très doux */
+            --bg-alt: #F9F6D0;         /* fond alt plus clair */
+            --text-dark: #400D3C;      /* violet profond - texte + CTA */
+            --text-muted: #525B7F;     /* bleu grisé - texte secondaire */
+            --border: #E5DFB0;         /* border crème dense */
+            --accent-light: #EAE0E8;   /* violet très pâle pour badges */
+            --accent: #525B7F;         /* bleu grisé - stars, checks, accents */
+            --border-hero: #BF8F84;    /* rose taupe - border hero */
+            --bg-main-rgb: 242, 239, 187;
+            --text-dark-rgb: 64, 13, 60;
+            --border-rgb: 229, 223, 176;
+            --accent-rgb: 82, 91, 127;
+            --text-muted-rgb: 82, 91, 127;
         }
 
         html { scroll-behavior: smooth; }
@@ -1201,53 +1169,31 @@
 
         .footer-bottom-links a:hover { color: var(--text-dark); }
 
-        /* ===== COLOR SWITCHER ===== */
-        .color-dropdown { position: relative; }
-
-        .color-dropdown > a::after {
-            content: '▾';
-            margin-left: 4px;
-            font-size: 11px;
-        }
-
-        .color-dropdown-menu {
-            display: none;
-            position: absolute;
-            top: calc(100% + 12px);
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(var(--bg-main-rgb), 0.95);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 12px;
+        /* ===== SOCIAL LINKS ===== */
+        .socials {
+            display: flex;
             gap: 10px;
-            flex-wrap: wrap;
-            width: 130px;
-            justify-content: center;
+            margin-top: 16px;
         }
-
-        .color-dropdown.open .color-dropdown-menu { display: flex; }
-
-        .color-swatch {
-            width: 32px;
-            height: 32px;
+        .socials a {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            border: 2px solid var(--border);
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            padding: 0;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+            transition: background 0.2s ease, transform 0.2s ease;
         }
-
-        .color-swatch:hover {
-            transform: scale(1.15);
-            box-shadow: 0 4px 12px rgba(var(--text-dark-rgb), 0.15);
+        .socials a:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
         }
-
-        .color-swatch.active {
-            border-color: var(--text-dark);
-            box-shadow: 0 0 0 2px var(--text-dark);
+        .socials svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
         }
 
         /* SVG theme overrides */
@@ -1362,14 +1308,6 @@
             <li><a href="#apropos">À propos</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li class="color-dropdown">
-                <a href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open')">Couleurs</a>
-                <div class="color-dropdown-menu">
-                    <button class="color-swatch active" data-theme="default" style="background: linear-gradient(135deg, #f6f0e9, #2b180a)" title="Défaut" onclick="setTheme('default')"></button>
-                    <button class="color-swatch" data-theme="violet" style="background: linear-gradient(135deg, #F0D9FF, #7B4FA0)" title="Violet" onclick="setTheme('violet')"></button>
-                    <button class="color-swatch" data-theme="vert" style="background: linear-gradient(135deg, #E1F2D5, #4A8C5C)" title="Vert" onclick="setTheme('vert')"></button>
-                </div>
-            </li>
             <li><a href="contact.html" class="navbar-cta">Prendre rendez-vous</a></li>
         </ul>
     </nav>
@@ -1378,16 +1316,16 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge">
-                <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                <svg viewBox="0 0 20 20" fill="#525B7F"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
                 <span data-cms="hero.badge">4.8/5 sur Google — Castets, Landes</span>
             </div>
             <h1><span data-cms="hero.title_line1">Votre toiletteur</span> <br><span data-cms="hero.title_line2">à Castets</span></h1>
-            <p class="hero-subtitle" data-cms="hero.subtitle">Toiletteuse diplômée depuis 2000, je prends soin de vos compagnons avec douceur et professionnalisme. Chiens et chats, toutes races, toutes tailles.</p>
+            <p class="hero-subtitle" data-cms="hero.subtitle">Toiletteuse diplômée depuis 2000, je prends soin de vos compagnons avec douceur et professionnalisme. Chiens toutes races, toutes tailles — chats sous certaines conditions.</p>
             <div class="hero-buttons">
                 <a href="contact.html" class="btn-primary">Prendre rendez-vous</a>
                 <a href="#prestations" class="btn-secondary">
                     Nos prestations
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#400D3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                 </a>
             </div>
             <div class="hero-stats">
@@ -1467,10 +1405,10 @@
             </div>
             <div class="prestation-card reveal">
                 <div class="prestation-card-icon">
-                    <img src="images/Shampooing.svg" alt="Shampooing">
+                    <img src="images/Shampooing.svg" alt="Bain">
                 </div>
-                <h3>Shampooing</h3>
-                <p>Shampooings professionnels sélectionnés selon le type de peau et de poil de votre animal.</p>
+                <h3>Bain</h3>
+                <p>Bain avec shampooing professionnel sélectionné selon le pelage, suivi des retouches nécessaires aux griffes et aux oreilles.</p>
             </div>
         </div>
         <div class="prestations-buttons reveal">
@@ -1514,11 +1452,11 @@
             <template data-cms-item>
                 <div class="review-card reveal">
                     <div class="review-stars">
-                        <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                        <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                        <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                        <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                        <svg viewBox="0 0 20 20" fill="#3a543a"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#525B7F"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#525B7F"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#525B7F"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#525B7F"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#525B7F"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
                     </div>
                     <p class="review-text" data-cms-field="text"></p>
                     <div class="review-author">
@@ -1548,7 +1486,7 @@
                 <div class="about-features">
                     <div class="about-feature">
                         <div class="about-feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#3a543a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#525B7F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                         </div>
                         <div class="about-feature-text">
                             <h4>Toutes races, toutes tailles</h4>
@@ -1557,7 +1495,7 @@
                     </div>
                     <div class="about-feature">
                         <div class="about-feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#3a543a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#525B7F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                         </div>
                         <div class="about-feature-text">
                             <h4>Approche douce et bienveillante</h4>
@@ -1566,7 +1504,7 @@
                     </div>
                     <div class="about-feature">
                         <div class="about-feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#3a543a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#525B7F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                         </div>
                         <div class="about-feature-text">
                             <h4>Produits professionnels</h4>
@@ -1592,7 +1530,7 @@
                     <div class="faq-item reveal">
                         <div class="faq-question" onclick="toggleFaq(this)">
                             <h4 data-cms-field="question"></h4>
-                            <div class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b180a" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                            <div class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#400D3C" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                         </div>
                         <div class="faq-answer"><p data-cms-field="answer"></p></div>
                     </div>
@@ -1628,7 +1566,15 @@
         <div class="footer-top">
             <div class="footer-brand">
                 <h3>Toutounet</h3>
-                <p>Toiletteuse diplômée depuis 2000. Chiens et chats, toutes races, toutes tailles. Castets, Landes.</p>
+                <p data-cms="footer.tagline">Toiletteuse diplômée depuis 2000. Chiens toutes races, toutes tailles. Chats sous certaines conditions. Castets, Landes.</p>
+                <div class="socials">
+                    <a data-cms="socials.facebook" data-cms-attr="href" href="#" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.3-1.5 1.5-1.5h1.5V4.3c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.2H7.5v3h2.6V21h3.4z"/></svg>
+                    </a>
+                    <a data-cms="socials.instagram" data-cms-attr="href" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.4.4 1.1.4 2.3.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.4.2-1.1.4-2.3.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.4-.4-1.1-.4-2.3-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-1.9.4-2.3.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .4-.2 1.1-.4 2.3-.4 1.3-.1 1.6-.1 4.8-.1zm0 2.2c-3.2 0-3.5 0-4.7.1-1.1 0-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.5-.1 4.7s0 3.5.1 4.7c0 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.5.1 4.7.1s3.5 0 4.7-.1c1.1 0 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.5.1-4.7s0-3.5-.1-4.7c0-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.5-.1-4.7-.1zm0 3.7c2.7 0 4.9 2.2 4.9 4.9s-2.2 4.9-4.9 4.9S7.1 14.7 7.1 12 9.3 7.1 12 7.1zm0 8.1c1.8 0 3.2-1.4 3.2-3.2s-1.4-3.2-3.2-3.2-3.2 1.4-3.2 3.2 1.4 3.2 3.2 3.2zm6.2-8.3c0 .6-.5 1.1-1.1 1.1s-1.1-.5-1.1-1.1.5-1.1 1.1-1.1 1.1.5 1.1 1.1z"/></svg>
+                    </a>
+                </div>
             </div>
             <div class="footer-col">
                 <h4>Navigation</h4>
@@ -1659,7 +1605,7 @@
         </div>
         <div class="footer-divider"></div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Toutounet — Tous droits réservés</p>
+            <p>&copy; 2025 Toutounet — Chiens & chats sous certaines conditions — Tous droits réservés</p>
             <div class="footer-bottom-links">
                 <a href="mentions-legales.html">Mentions légales</a>
                 <a href="confidentialite.html">Confidentialité</a>
@@ -1713,23 +1659,6 @@
         }, { threshold: 0.15 });
 
         document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
-
-        // Theme switcher
-        function setTheme(theme) {
-            document.documentElement.className = theme === 'default' ? '' : 'theme-' + theme;
-            document.querySelectorAll('.color-swatch').forEach(function(s) {
-                s.classList.toggle('active', s.dataset.theme === theme);
-            });
-            document.querySelector('.color-dropdown').classList.remove('open');
-        }
-
-        // Close dropdown on outside click
-        document.addEventListener('click', function(e) {
-            var dropdown = document.querySelector('.color-dropdown');
-            if (dropdown && !e.target.closest('.color-dropdown')) {
-                dropdown.classList.remove('open');
-            }
-        });
     </script>
 
 </body>

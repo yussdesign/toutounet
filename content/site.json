@@ -2,24 +2,24 @@
   "contact": {
     "phone": "06 41 07 60 29",
     "phone_href": "tel:0641076029",
-    "email": "contact@toutounet.fr",
+    "email": "indy.vert@gmail.com",
     "address_line1": "654 Rue des Mousquetaires",
     "address_line2": "40260 Castets",
     "city": "Castets, Landes"
   },
   "hours": {
-    "weekdays": "Mar – Ven : 9h – 18h",
-    "saturday": "Samedi : 9h – 13h",
-    "closed": "Dim & Lun : Fermé",
-    "contact_weekdays": "Lundi – Vendredi : 9h00 – 17h00",
-    "contact_saturday": "Samedi : 9h00 – 12h00",
+    "weekdays": "Lun – Ven : 9h – 18h (sur RDV)",
+    "saturday": "Samedi : sur RDV",
+    "closed": "Dim : Fermé",
+    "contact_weekdays": "Lundi – Vendredi : 9h00 – 18h00 (sur RDV)",
+    "contact_saturday": "Samedi : sur RDV",
     "contact_sunday": "Dimanche : Fermé"
   },
   "hero": {
     "badge": "4.8/5 sur Google — Castets, Landes",
     "title_line1": "Votre toiletteur",
     "title_line2": "à Castets",
-    "subtitle": "Toiletteuse diplômée depuis 2000, je prends soin de vos compagnons avec douceur et professionnalisme. Chiens et chats, toutes races, toutes tailles.",
+    "subtitle": "Toiletteuse diplômée depuis 2000, je prends soin de vos compagnons avec douceur et professionnalisme. Chiens toutes races, toutes tailles — chats sous certaines conditions.",
     "stat_experience": "25+",
     "stat_experience_label": "Années d'expérience",
     "stat_pets": "500+",
@@ -63,7 +63,14 @@
   "contact_page": {
     "intro1": "Vous avez des questions ou souhaitez nous contacter ?",
     "intro2": "Remplissez notre formulaire de contact ou appelez-nous directement, et nous serons ravis de vous assister.",
-    "delay_notice": "délai d'attente pour un rendez-vous est en moyenne de 4 semaines"
+    "delay_notice": "délai d'attente pour un rendez-vous est en moyenne de 1 à 2 semaines"
+  },
+  "footer": {
+    "tagline": "Toiletteuse diplômée depuis 2000. Chiens toutes races, toutes tailles. Chats sous certaines conditions. Castets, Landes."
+  },
+  "socials": {
+    "facebook": "https://www.facebook.com/",
+    "instagram": "https://www.instagram.com/"
   },
   "reviews": [
     {
@@ -85,19 +92,19 @@
   "faq": [
     {
       "question": "Quels sont les délais pour un rendez-vous ?",
-      "answer": "Comptez en moyenne 2 à 3 semaines d'attente. Je vous recommande de réserver à l'avance, surtout en période estivale."
+      "answer": "Comptez en moyenne 1 à 2 semaines d'attente. Je vous recommande de réserver à l'avance, surtout en période estivale."
     },
     {
       "question": "Quels sont vos horaires d'ouverture ?",
-      "answer": "Du mardi au vendredi de 9h à 12h30 et de 13h30 à 18h, et le samedi de 9h à 13h. Fermé le lundi et le dimanche."
+      "answer": "Du lundi au vendredi de 9h à 18h, uniquement sur rendez-vous. Le samedi sur rendez-vous également. Fermé le dimanche."
     },
     {
       "question": "Acceptez-vous toutes les races ?",
-      "answer": "Oui, toutes les races et toutes les tailles sont les bienvenues, du Yorkshire au Terre-Neuve. J'accueille également les chats."
+      "answer": "Oui, toutes les races et toutes les tailles de chiens sont les bienvenues, du Yorkshire au Terre-Neuve. Les chats sont également acceptés sous certaines conditions — n'hésitez pas à me contacter pour en parler."
     },
     {
       "question": "À partir de quel âge peut-on faire toiletter son animal ?",
-      "answer": "Dès l'âge de 3 mois pour une première familiarisation. L'approche est adaptée pour qu'il associe le toilettage à un moment agréable."
+      "answer": "Dès le rappel de vaccin : une fois le deuxième vaccin fait, nous pouvons commencer à accueillir votre compagnon en douceur pour une première familiarisation."
     },
     {
       "question": "Combien de temps dure une séance ?",

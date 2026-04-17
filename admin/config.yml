@@ -90,6 +90,21 @@ collections:
               - { label: "Intro — ligne 2", name: "intro2", widget: "text" }
               - { label: "Note délai d'attente", name: "delay_notice", widget: "string" }
 
+          # --- Pied de page (texte de présentation sous "Toutounet") ---
+          - label: "Pied de page"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Description courte (sous le logo Toutounet)", name: "tagline", widget: "text" }
+
+          # --- Réseaux sociaux ---
+          - label: "Réseaux sociaux"
+            name: "socials"
+            widget: "object"
+            fields:
+              - { label: "Lien Facebook", name: "facebook", widget: "string", hint: "URL complète (https://...)" }
+              - { label: "Lien Instagram", name: "instagram", widget: "string", hint: "URL complète (https://...)" }
+
           # --- Avis clients ---
           - label: "Avis clients"
             name: "reviews"
