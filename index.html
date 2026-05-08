@@ -16,16 +16,16 @@
             --bg-main: #F8F4EC;        /* fond principal - beige clair naturel */
             --bg-alt: #F0E6D2;         /* fond alt - beige sable */
             --text-dark: #201756;      /* violet très profond - texte + CTA */
-            --text-muted: #1A786A;     /* teal foncé - texte secondaire (lisibilité AA) */
+            --text-muted: #7B63A4;     /* violet medium - texte secondaire */
             --border: #E2D4B8;         /* border beige */
             --accent-light: #CBC7D8;   /* violet gris pâle pour badges */
-            --accent: #2DC2B0;         /* teal vif (logo) - stars, checks, accents */
+            --accent: #7B63A4;         /* violet medium - stars, checks, accents */
             --border-hero: #A08BC0;    /* violet doux - border hero */
             --bg-main-rgb: 248, 244, 236;
             --text-dark-rgb: 32, 23, 86;
             --border-rgb: 226, 212, 184;
-            --accent-rgb: 45, 194, 176;
-            --text-muted-rgb: 26, 120, 106;
+            --accent-rgb: 123, 98, 164;
+            --text-muted-rgb: 123, 98, 164;
         }
 
         html { scroll-behavior: smooth; }
@@ -103,8 +103,8 @@
         .navbar-links a:hover { color: var(--text-dark); }
 
         .navbar-cta {
-            background-color: var(--text-dark);
-            color: var(--bg-main) !important;
+            background-color: #2DC2B0;
+            color: var(--text-dark) !important;
             padding: 10px 20px;
             border-radius: 12px;
             transition: transform 0.2s ease, box-shadow 0.2s ease, color 0s !important;
@@ -112,8 +112,8 @@
 
         .navbar-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(var(--text-dark-rgb), 0.2);
-            color: var(--bg-main) !important;
+            box-shadow: 0 6px 20px rgba(45, 194, 176, 0.35);
+            color: var(--text-dark) !important;
         }
 
         .navbar-toggle {
@@ -271,8 +271,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--text-dark);
-            color: var(--bg-main);
+            background-color: #2DC2B0;
+            color: var(--text-dark);
             font-family: 'Satoshi', sans-serif;
             font-weight: 500;
             font-size: clamp(14px, 0.85vw, 16px);
@@ -287,7 +287,7 @@
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(var(--text-dark-rgb), 0.2);
+            box-shadow: 0 8px 24px rgba(45, 194, 176, 0.35);
         }
 
         .btn-secondary {
@@ -1368,7 +1368,7 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge">
-                <svg viewBox="0 0 20 20" fill="#2DC2B0"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                <svg viewBox="0 0 20 20" fill="#7B63A4"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
                 <span data-cms="hero.badge">4.8/5 sur Google — Castets, Landes</span>
             </div>
             <h1><span data-cms="hero.title_line1">Votre toiletteur</span> <br><span data-cms="hero.title_line2">à Castets</span></h1>
@@ -1504,11 +1504,11 @@
             <template data-cms-item>
                 <div class="review-card reveal">
                     <div class="review-stars">
-                        <svg viewBox="0 0 20 20" fill="#2DC2B0"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                        <svg viewBox="0 0 20 20" fill="#2DC2B0"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                        <svg viewBox="0 0 20 20" fill="#2DC2B0"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                        <svg viewBox="0 0 20 20" fill="#2DC2B0"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
-                        <svg viewBox="0 0 20 20" fill="#2DC2B0"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#7B63A4"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#7B63A4"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#7B63A4"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#7B63A4"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#7B63A4"><path d="M10 1L12.39 6.26L18.18 7.27L14.09 11.24L15.18 17L10 14.27L4.82 17L5.91 11.24L1.82 7.27L7.61 6.26L10 1Z"/></svg>
                     </div>
                     <p class="review-text" data-cms-field="text"></p>
                     <div class="review-author">
@@ -1538,7 +1538,7 @@
                 <div class="about-features">
                     <div class="about-feature">
                         <div class="about-feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#2DC2B0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#7B63A4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                         </div>
                         <div class="about-feature-text">
                             <h4>Toutes races, toutes tailles</h4>
@@ -1547,7 +1547,7 @@
                     </div>
                     <div class="about-feature">
                         <div class="about-feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#2DC2B0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#7B63A4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                         </div>
                         <div class="about-feature-text">
                             <h4>Approche douce et bienveillante</h4>
@@ -1556,7 +1556,7 @@
                     </div>
                     <div class="about-feature">
                         <div class="about-feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#2DC2B0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#7B63A4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                         </div>
                         <div class="about-feature-text">
                             <h4>Produits professionnels</h4>
