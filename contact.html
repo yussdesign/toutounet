@@ -341,6 +341,26 @@
             color: #7B63A4;
         }
 
+        .footer-bottom-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .footer-credit {
+            font-size: 13px !important;
+            opacity: 0.75;
+        }
+
+        .footer-credit a {
+            color: #7B63A4;
+            text-decoration: none;
+            border-bottom: 1px dotted currentColor;
+            transition: color 0.2s ease;
+        }
+
+        .footer-credit a:hover { color: #201756; }
+
         .footer-bottom-links {
             display: flex;
             gap: 28px;
@@ -426,7 +446,10 @@
 
     <!-- NAVBAR -->
     <nav class="navbar">
-        <a href="index.html" class="navbar-brand">Toutounet</a>
+        <a href="index.html" class="navbar-brand">
+            <img src="images/logo.jpg" alt="Logo Toutounet" class="navbar-logo">
+            <span>Toutounet</span>
+        </a>
         <button class="navbar-toggle" onclick="document.querySelector('.navbar-links').classList.toggle('open')" aria-label="Menu">
             <span></span><span></span><span></span>
         </button>
@@ -546,7 +569,10 @@
     <footer class="footer">
         <div class="footer-divider"></div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Toutounet — Tous droits réservés</p>
+            <div class="footer-bottom-left">
+                <p>&copy; 2025 Toutounet — Tous droits réservés</p>
+                <p class="footer-credit">Site réalisé par <a href="mentions-legales.html#conception">Yuss Design</a></p>
+            </div>
             <div class="footer-bottom-links">
                 <a href="mentions-legales.html">Mentions légales</a>
                 <a href="confidentialite.html">Confidentialité</a>

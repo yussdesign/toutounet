@@ -64,11 +64,22 @@
         }
 
         .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-family: 'Halant', serif;
             font-weight: 600;
             font-size: 26px;
             color: var(--text-dark);
             text-decoration: none;
+        }
+
+        .navbar-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            object-fit: cover;
+            display: block;
         }
 
         .navbar-links {
@@ -1084,12 +1095,28 @@
             margin: 0 auto 60px;
         }
 
+        .footer-brand-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .footer-logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            object-fit: cover;
+            display: block;
+            flex-shrink: 0;
+        }
+
         .footer-brand h3 {
             font-family: 'Halant', serif;
             font-weight: 500;
             font-size: 32px;
             color: var(--text-dark);
-            margin-bottom: 16px;
+            margin: 0;
         }
 
         .footer-brand p {
@@ -1152,6 +1179,26 @@
             font-size: 14px;
             color: var(--text-muted);
         }
+
+        .footer-bottom-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .footer-credit {
+            font-size: 13px !important;
+            opacity: 0.75;
+        }
+
+        .footer-credit a {
+            color: var(--text-muted);
+            text-decoration: none;
+            border-bottom: 1px dotted currentColor;
+            transition: color 0.2s ease;
+        }
+
+        .footer-credit a:hover { color: var(--text-dark); }
 
         .footer-bottom-links {
             display: flex;
@@ -1297,7 +1344,10 @@
 
     <!-- NAVBAR -->
     <nav class="navbar">
-        <a href="#" class="navbar-brand">Toutounet</a>
+        <a href="#" class="navbar-brand">
+            <img src="images/logo.jpg" alt="Logo Toutounet" class="navbar-logo">
+            <span>Toutounet</span>
+        </a>
         <button class="navbar-toggle" onclick="document.querySelector('.navbar-links').classList.toggle('open')" aria-label="Menu">
             <span></span><span></span><span></span>
         </button>
@@ -1565,7 +1615,10 @@
     <footer class="footer">
         <div class="footer-top">
             <div class="footer-brand">
-                <h3>Toutounet</h3>
+                <div class="footer-brand-header">
+                    <img src="images/logo.jpg" alt="Logo Toutounet" class="footer-logo">
+                    <h3>Toutounet</h3>
+                </div>
                 <p data-cms="footer.tagline">Toiletteuse diplômée depuis 2000. Chiens toutes races, toutes tailles. Chats sous certaines conditions. Castets, Landes.</p>
                 <div class="socials">
                     <a data-cms="socials.facebook" data-cms-attr="href" href="#" target="_blank" rel="noopener" aria-label="Facebook">
@@ -1605,7 +1658,10 @@
         </div>
         <div class="footer-divider"></div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Toutounet — Chiens & chats sous certaines conditions — Tous droits réservés</p>
+            <div class="footer-bottom-left">
+                <p>&copy; 2025 Toutounet — Chiens & chats sous certaines conditions — Tous droits réservés</p>
+                <p class="footer-credit">Site réalisé par <a href="mentions-legales.html#conception">Yuss Design</a></p>
+            </div>
             <div class="footer-bottom-links">
                 <a href="mentions-legales.html">Mentions légales</a>
                 <a href="confidentialite.html">Confidentialité</a>
