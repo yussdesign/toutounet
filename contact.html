@@ -491,54 +491,56 @@
 
                 <div class="contact-divider"></div>
 
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');">
+                <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                    <input type="hidden" name="access_key" value="96f54eef-8b35-45e5-8a10-3d5a39a48a01">
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label>Prénom <span class="required">*</span></label>
-                            <input type="text" required placeholder="Votre prénom">
+                            <input type="text" name="prenom" required placeholder="Votre prénom">
                         </div>
                         <div class="form-group">
                             <label>Nom <span class="required">*</span></label>
-                            <input type="text" required placeholder="Votre nom">
+                            <input type="text" name="nom" required placeholder="Votre nom">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label>Email <span class="required">*</span></label>
-                            <input type="email" required placeholder="votre@email.com">
+                            <input type="email" name="email" required placeholder="votre@email.com">
                         </div>
                         <div class="form-group">
                             <label>Téléphone <span class="required">*</span></label>
-                            <input type="tel" required placeholder="06 00 00 00 00">
+                            <input type="tel" name="telephone" required placeholder="06 00 00 00 00">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label>Ville <span class="required">*</span></label>
-                            <input type="text" required placeholder="Votre ville">
+                            <input type="text" name="ville" required placeholder="Votre ville">
                         </div>
                         <div class="form-group">
                             <label>Code postal <span class="required">*</span></label>
-                            <input type="text" required placeholder="40260">
+                            <input type="text" name="code_postal" required placeholder="40260">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label>Nom du chien <span class="required">*</span></label>
-                            <input type="text" required placeholder="Nom de votre compagnon">
+                            <input type="text" name="nom_chien" required placeholder="Nom de votre compagnon">
                         </div>
                         <div class="form-group">
                             <label>Âge du chien <span class="required">*</span></label>
-                            <input type="text" required placeholder="Ex : 3 ans">
+                            <input type="text" name="age_chien" required placeholder="Ex : 3 ans">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Race du chien <span class="required">*</span></label>
-                        <input type="text" required placeholder="Ex : Bichon, Caniche, Berger...">
+                        <input type="text" name="race_chien" required placeholder="Ex : Bichon, Caniche, Berger...">
                     </div>
                     <div class="form-group">
                         <label>Message <span class="required">*</span></label>
-                        <textarea required placeholder="Merci de nous indiquer vos besoins, problématiques (allergies, ...)"></textarea>
+                        <textarea name="message" required placeholder="Merci de nous indiquer vos besoins, problématiques (allergies, ...)"></textarea>
                     </div>
                     <button type="submit" class="form-submit">Envoyer le message</button>
                 </form>
