@@ -56,8 +56,13 @@
     },
     {
       "src": "images/Ugo.jpg",
-      "name": "Ugo",
-      "alt": "Ugo"
+      "name": "Ugho",
+      "alt": "Ugho"
+    },
+    {
+      "src": "/images/1000004814.jpg",
+      "name": "Mick",
+      "alt": "Mick"
     }
   ],
   "contact_page": {
